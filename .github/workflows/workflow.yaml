@@ -1,0 +1,16 @@
+on:
+    repository_dispatch:
+      types: docker-process
+  name: preload-image
+  jobs:
+    deploy:
+      name: cleaning previous file and pre loading the image(s) at the edge
+      runs-on: ubuntu-latest
+      steps:
+      - name: process data received
+        id: event-received
+        shell: bash
+        run: |
+          echo IMAGE NAME ${{ github.event.client_payload.image_name }}
+          echo TAG ${{ github.event.client_payload.tag }}
+          echo PLATFORMS ${{ github.event.client_payload.platforms }}
