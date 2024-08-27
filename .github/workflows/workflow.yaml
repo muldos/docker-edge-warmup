@@ -13,4 +13,6 @@ jobs:
       run: |
         echo IMAGE NAME ${{ github.event.client_payload.image_name }}
         echo TAG ${{ github.event.client_payload.tag }}
-        echo PLATFORMS ${{ github.event.client_payload.platforms }}
+        echo repo_key ${{ github.event.client_payload.repo_key }}
+        echo path ${{ github.event.client_payload.path }}
+        echo name ${{ github.event.client_payload.name }}
