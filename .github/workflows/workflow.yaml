@@ -7,6 +7,11 @@ jobs:
     name: cleaning previous file and pre loading the image(s) at the edge
     runs-on: ubuntu-latest
     steps:
+    - name: Setup JFrog CLI
+      id: setup-cli
+      uses: jfrog/setup-jfrog-cli@v4
+      env:
+        JF_ENV_1: ${{ secrets.JF_SECRET_ENV_1 }}
     - name: process data received
       id: event-received
       shell: bash
@@ -16,3 +21,5 @@ jobs:
         echo repo_key ${{ github.event.client_payload.repo_key }}
         echo path ${{ github.event.client_payload.path }}
         echo name ${{ github.event.client_payload.name }}
+        jf rt del ${{ vars.JF_HOST}}/${{ github.event.client_payload.repo_key }}/${{ github.event.client_payload.path }}
+        jf rt dl ${{ vars.JF_HOST}}/${{ github.event.client_payload.repo_key }}/${{ github.event.client_payload.path }} ./${{ github.event.client_payload.name }}
