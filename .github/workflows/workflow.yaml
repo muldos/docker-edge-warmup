@@ -21,6 +21,6 @@ jobs:
         echo repo_key ${{ github.event.client_payload.repo_key }}
         echo path ${{ github.event.client_payload.path }}
         echo name ${{ github.event.client_payload.name }}
-        jf rt del ${{ vars.JF_HOST}}/${{ vars.JF_TARGET_REPO }}-cache/${{ github.event.client_payload.path }}
+        jf rt del ${{ vars.JF_HOST}}/${{ vars.JF_TARGET_REPO }}/${{ github.event.client_payload.path }}
         jf rt dl ${{ vars.JF_HOST}}/${{ vars.JF_TARGET_REPO }}/${{ github.event.client_payload.path }} ./${{ github.event.client_payload.name }}
         jf docker pull ${{ vars.JF_HOST }}/${{ vars.JF_TARGET_REPO }}/${{ github.event.client_payload.image_name }}:${{ github.event.client_payload.tag}}
