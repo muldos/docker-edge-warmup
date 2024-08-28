@@ -4,7 +4,7 @@ on:
 name: preload-image
 jobs:
   deploy:
-    name: cleaning previous file and pre loading the image(s) at the edge
+    name: Pre loading at the edge
     runs-on: ubuntu-latest
     steps:
     - name: Setup JFrog CLI
